@@ -1,0 +1,185 @@
+import React, { useState, useEffect } from 'react';
+import Header from '../../components/header';
+import Footer from '../../components/footer';
+import Head from 'next/head';
+import Progress from '../../components/progress';
+import Form from '../../components/form';
+import Page1 from "./Page1"
+import Page2 from "./Page2"
+import Page3 from "./Page3"
+import Page4 from "./Page4"
+var propertyType;
+var propertySize;
+export async function getStaticProps() {
+  var res1 = await fetch('https://syncrow.kodagu.today/api/property-types');
+  var response1 = await res1.json();
+  var property_types = response1.data;
+  var res2 = await fetch('https://syncrow.kodagu.today/api/property-sizes');
+  var response2 = await res2.json();
+  var property_sizes = response2.data;
+  var res3 = await fetch('https://syncrow.kodagu.today/api/bundle-items');
+  var response3 = await res3.json();
+  var item_list = response3.data;
+  var lis1 = item_list.filter((item) => {
+    return item.attributes.type === 'convenience';
+  });
+  var lis2 = item_list.filter((item) => {
+    return item.attributes.type === 'safety';
+  });
+  var lis3 = item_list.filter((item) => {
+    return item.attributes.type === 'entertainment';
+  });
+  lis1 = lis1.map((item) => {
+    return {
+      quantity: 0,
+      bundle_item: item,
+    };
+  });
+  lis2 = lis2.map((item) => {
+    return {
+      quantity: 0,
+      bundle_item: item,
+    };
+  });
+  lis3 = lis3.map((item) => {
+    return {
+      quantity: 0,
+      bundle_item: item,
+    };
+  });
+  return {
+    props: {
+      property_sizes,
+      property_types,
+      lis1,
+      lis2,
+      lis3,
+    },
+  };
+}
+export default function Build({
+  property_sizes,
+  property_types,
+  lis1,
+  lis2,
+  lis3,
+}) {
+  const [active, setActive] = useState(1);
+  const [amount, setAmount] = useState(0);
+  var [property_types_toggle, togglePropertyType] = useState(
+    new Array(property_types.length).fill(false)
+  );
+  var [property_sizes_toggle, togglePropertySize] = useState(
+    new Array(property_sizes.length).fill(false)
+  );
+  function sumAllPrice() {
+    var sum = 0;
+    for (var i = 0; i < lis1.length; i++) {
+      sum += quantity_list1[i] * lis1[i].bundle_item.attributes.price;
+    }
+    for (var i = 0; i < lis2.length; i++) {
+      sum += quantity_list2[i] * lis2[i].bundle_item.attributes.price;
+    }
+    for (var i = 0; i < lis3.length; i++) {
+      sum += quantity_list3[i] * lis3[i].bundle_item.attributes.price;
+    }
+    setAmount(sum);
+  }
+  const handleTypeToggle = (index) => {
+    const newVisibilities = new Array(property_types.length).fill(false);
+    newVisibilities[index] = !property_types_toggle[index];
+    togglePropertyType(newVisibilities);
+    propertyType = property_types[index];
+  };
+  const handleSizeToggle = (index) => {
+    const newVisibilities = new Array(property_sizes.length).fill(false);
+    newVisibilities[index] = !property_sizes_toggle[index];
+    togglePropertySize(newVisibilities);
+    propertySize = property_sizes[index];
+  };
+  var [quantity_list1, setCount1] = useState(new Array(lis1.length).fill(0));
+  const handleQuantity1 = (index, type) => {
+    var tempList = [...quantity_list1];
+    if (type === 'plus') {
+      tempList[index] = quantity_list1[index] + 1;
+      setCount1(tempList);
+    } else {
+      if (quantity_list1[index] > 0) {
+        tempList[index] = quantity_list1[index] - 1;
+        setCount1(tempList);
+      } else {
+        tempList[index] = 0;
+        setCount1(tempList);
+      }
+    }
+    sumAllPrice();
+  };
+  var [quantity_list2, setCount2] = useState(new Array(lis2.length).fill(0));
+  const handleQuantity2 = (index, type) => {
+    var tempList = [...quantity_list2];
+    if (type === 'plus') {
+      tempList[index] = quantity_list2[index] + 1;
+      setCount2(tempList);
+    } else {
+      if (quantity_list2[index] > 0) {
+        tempList[index] = quantity_list2[index] - 1;
+        setCount2(tempList);
+      } else {
+        tempList[index] = 0;
+        setCount2(tempList);
+      }
+    }
+    sumAllPrice();
+  };
+  var [quantity_list3, setCount3] = useState(new Array(lis3.length).fill(0));
+  const handleQuantity3 = (index, type) => {
+    var tempList = [...quantity_list3];
+    if (type === 'plus') {
+      tempList[index] = quantity_list3[index] + 1;
+      setCount3(tempList);
+    } else {
+      if (quantity_list3[index] > 0) {
+        tempList[index] = quantity_list3[index] - 1;
+        setCount3(tempList);
+      } else {
+        tempList[index] = 0;
+        setCount3(tempList);
+      }
+    }
+    sumAllPrice();
+  };
+
+  useEffect(() => {
+    sumAllPrice();
+  });
+
+  const [click1, setClick1] = useState(false);
+  const [click2, setClick2] = useState(false);
+  const [click3, setClick3] = useState(false);
+
+  return (
+    <div className='overflow-x-hidden'>
+      <Head>
+        <title>Syncrow</title>
+        <meta name='description' content='Generated by create next app' />
+        <link
+          rel='icon'
+          href='https://ik.imagekit.io/jason7531/syncrow/common/Group_1_rkAObjd65.png?ik-sdk-version=javascript-1.4.3&updatedAt=1642343317149'
+        />
+        <style>
+          @import
+          url(https://fonts.cdnfonts.com/css/guthen-bloots-personal-use);
+        </style>
+      </Head>
+      {/* page 1 */}
+      <Page1 active={active} setActive={setActive} click1={click1} setClick1={setClick1} click2={click2} setClick2={setClick2} click3={click3} setClick3={setClick3}/>
+      {/* page 2 */}
+      <Page2 active={active} setActive={setActive}/>
+      {/* page 3 */}
+      <Page3 active={active} setActive={setActive} amount={amount} click1={click1} click2={click2} click3={click3}/>
+            {/* page4 */}
+                        <Page4 active={active} setActive={setActive} amount={amount} lis1={lis1} lis2={lis2} lis3={lis3} quantity_list1={quantity_list1} quantity_list2={quantity_list2} quantity_list3={quantity_list3}/>
+   
+    </div>
+  );
+}
