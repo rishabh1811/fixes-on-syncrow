@@ -349,7 +349,7 @@ export default function Home({ data }) {
                 className="w-full desktop:h-98 h-80 object-cover rounded-t-3xl"
                 alt=""
               />
-              <div className="bg-blue-700 -mt-2 rounded-b-3xl desktop:h-85 mediumLarge:h-98  medium:h-99 relative  h-[490px]">
+              <div className="bg-blue-700 -mt-2 rounded-b-3xl desktop:h-85 mediumLarge:h-98  medium:h-99 relative  h-[495px]">
                 <h2 className="uppercase pt-6 pb-2 text-white px-8 text-3xl font-semibold">
                   convenience
                 </h2>
@@ -385,7 +385,7 @@ export default function Home({ data }) {
                 className="w-full desktop:h-98 h-80 object-cover rounded-t-3xl"
                 alt=""
               />
-              <div className="bg-blue-700 -mt-2 rounded-b-3xl desktop:h-85 medium:h-99  mediumLarge:h-98  relative h-[490px]">
+              <div className="bg-blue-700 -mt-2 rounded-b-3xl desktop:h-85 medium:h-99  mediumLarge:h-98  relative h-[495px]">
                 <h2 className="uppercase  pt-6 pb-2 text-white px-8 text-3xl font-semibold">
                   SAFETY
                 </h2>
@@ -417,7 +417,7 @@ export default function Home({ data }) {
                 className="w-full desktop:h-98 h-80 object-cover rounded-t-3xl"
                 alt=""
               />
-              <div className="bg-blue-700 -mt-2 rounded-b-3xl desktop:h-85 medium:h-99 mediumLarge:h-98 relative h-[490px]">
+              <div className="bg-blue-700 -mt-2 rounded-b-3xl desktop:h-85 medium:h-99 mediumLarge:h-98 relative h-[495px]">
                 <h2 className="uppercase  pt-6 pb-2  text-white px-8 text-3xl font-semibold">
                   save energy
                 </h2>
@@ -458,7 +458,7 @@ export default function Home({ data }) {
                       className="w-full"
                       alt=""
                     />
-                    <div className="bg-blue-700 -mt-2 rounded-b-3xl flex flex-col items-center h-[490px]">
+                    <div className="bg-blue-700 -mt-2 rounded-b-3xl flex flex-col items-center h-[495px]">
                       <h2 className="uppercase py-10 text-white px-8 text-3xl font-semibold tracking-wide">
                         convenience
                       </h2>
@@ -500,7 +500,7 @@ export default function Home({ data }) {
                       className="w-full"
                       alt=""
                     />
-                    <div className="bg-blue-700 -mt-2 rounded-b-3xl flex flex-col items-center h-[490px]">
+                    <div className="bg-blue-700 -mt-2 rounded-b-3xl flex flex-col items-center h-[495px]">
                       <h2 className="uppercase py-10 text-white px-8 text-3xl font-semibold tracking-wide">
                         safety
                       </h2>
@@ -537,7 +537,7 @@ export default function Home({ data }) {
                       className="w-full"
                       alt=""
                     />
-                    <div className="bg-blue-700  -mt-2 rounded-b-3xl flex flex-col items-center h-[490px]">
+                    <div className="bg-blue-700  -mt-2 rounded-b-3xl flex flex-col items-center h-[495px]">
                       <h2 className="uppercase py-10 text-white px-8 text-3xl font-semibold text-center tracking-wide">
                         save energy
                       </h2>
